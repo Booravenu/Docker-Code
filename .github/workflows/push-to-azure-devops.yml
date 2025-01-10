@@ -1,0 +1,29 @@
+name: Push to Azure DevOps
+
+on:
+  push:
+    branches:
+      - main  # Trigger the workflow on pushes to the 'main' branch
+
+jobs:
+  push-code:
+    runs-on: ubuntu-latest
+
+    steps:
+    - name: Checkout GitHub repo
+      uses: actions/checkout@v3
+
+    - name: Set up Git
+      run: |
+        git config --global user.name "GitHub Actions"
+        git config --global user.email "actions@github.com"
+
+    - name: Push to Azure DevOps
+      env:
+        AZURE_DEVOPS_PAT: ${{ 1kB9M32Mx1i31ndgUUyPuG1or0XstyjJIYAX1q3dSiPBIRep01YMJQQJ99BAACAAAAAr66ZhAAASAZDOHXEq }}
+      run: |
+        # Add Azure DevOps repository as a remote
+        git remote add azure https://$(echo -n ":{AZURE_DEVOPS_PAT}" | base64 -d)@dev.azure.com/venubura123/nani/_git/demogit
+        
+        # Push changes to Azure DevOps
+        git push azure main --force
