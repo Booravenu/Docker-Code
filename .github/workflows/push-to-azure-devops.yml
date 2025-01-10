@@ -17,18 +17,18 @@ jobs:
 
     - name: Set up Git
       run: |
-        git config --global user.name "Booravenu"
-        git config --global user.email "venubura123@gmail.com"
+        git config --global user.name "GitHub Actions"
+        git config --global user.email "actions@github.com"
 
     - name: Push to Azure DevOps
       env:
-        AZURE_DEVOPS_PAT: ${{ 1kB9M32Mx1i31ndgUUyPuG1or0XstyjJIYAX1q3dSiPBIRep01YMJQQJ99BAACAAAAAr66ZhAAASAZDOHXEq }}
+        AZURE_DEVOPS_PAT: ${{ secrets.AZURE_DEVOPS_PAT }}
       run: |
         # Add Azure DevOps repository as a remote
-        git remote add azure https://1kB9M32Mx1i31ndgUUyPuG1or0XstyjJIYAX1q3dSiPBIRep01YMJQQJ99BAACAAAAAr66ZhAAASAZDOHXEq}:x-oauth-basic@dev.azure.com/venubura123/nani/_git/demogit
-
+        git remote add azure https://1kB9M32Mx1i31ndgUUyPuG1or0XstyjJIYAX1q3dSiPBIRep01YMJQQJ99BAACAAAAAr66ZhAAASAZDOHXEq:x-oauth-basic@dev.azure.com/venubura123/nani/_git/demogit
         # Push changes to Azure DevOps
         git push azure main --force
+
 
 
 
