@@ -20,7 +20,7 @@ jobs:
 
     - name: Push to Azure DevOps
       env:
-        AZURE_DEVOPS_PAT: ${{ 1kB9M32Mx1i31ndgUUyPuG1or0XstyjJIYAX1q3dSiPBIRep01YMJQQJ99BAACAAAAAr66ZhAAASAZDOHXEq }}
+        AZURE_DEVOPS_PAT: ${{ secrets.AZURE_DEVOPS_PAT }}
       run: |
         # Add Azure DevOps repository as a remote
         git remote add azure https://$(echo -n ":{AZURE_DEVOPS_PAT}" | base64 -d)@dev.azure.com/venubura123/nani/_git/demogit
